@@ -11,9 +11,8 @@ use Phalcon\Escaper;
 use Phalcon\Session\Manager;
 use Phalcon\Session\Adapter\Stream;
 use MyApp\Locale;
-use Phalcon\Forms\Form;
-use Phalcon\Forms\Element\Text;
-use Phalcon\Forms\Element\Select;
+use Phalcon\Cache\Adapter\Stream as streamcache;
+use Phalcon\Storage\SerializerFactory;
 
 $config = new Config([]);
 
@@ -103,7 +102,24 @@ $container->set(
         return $session;
     }
 );
+
+$container->set(
+    'cache',
+    function () {
+        $serializerFactory = new SerializerFactory();
+        $options = [
+            'defaultSerializer' => 'Json',
+            'lifetime'          => 7200,
+            'storageDir'        => APP_PATH.'/data/storage/cache',
+        ];
+        return new streamcache($serializerFactory, $options);
+        
+    }
+);
+
 $container->set('locale', (new Locale())->getTranslator());
+
+$application = new Application($container);
 
 $eventsManager = $container->get('eventsManager');
 $eventsManager->attach(

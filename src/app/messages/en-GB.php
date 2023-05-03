@@ -4,8 +4,7 @@
 $messages = [
     'hi'      => 'Hello',
     'bye'     => 'Good Bye',
-    'hi-name' => 'Hello %name%',
-    'signup' => 'Signup',
+    'signup' => 'Signup in endlish',
     'token not recieved' => 'token is not recieved',
 
 ];

@@ -3,7 +3,6 @@
 use Phalcon\Mvc\Controller;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-use MyApp\Locale;
 
 
 class SignupController extends Controller
@@ -11,9 +10,7 @@ class SignupController extends Controller
 
     public function IndexAction()
     {
-        // defalut action
-        // eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjEzNTY5OTk1MjQsIm5iZiI6MTM1NzAwMDAwMCwicm9sZSI6ImFkbWluIn0.8MDNXPtnvoo_LFMiE05cdqX59ACR8HuvB7TMm9pRAKQ
-
+        // default action
     }
 
     public function registerAction()
@@ -43,10 +40,14 @@ class SignupController extends Controller
         $key = '123456789';
 
         $payload = [
-            'role' => $data['role']
+            'role' => $data['role'],
+            'iat' => 1356999524,
+            'nbf' => 1357000000
         ];
         $jwt = JWT::encode($payload, $key, 'HS256');
+        // print_r($jwt);die;
         $this->response->redirect('/product/index?bearer=' . $jwt);
+
         $this->view->success = $success;
         if ($success) {
             $this->view->message = "Register succesfully";

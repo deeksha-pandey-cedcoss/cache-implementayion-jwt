@@ -11,17 +11,20 @@
 
 <body>
     <?php
-    echo $this->tag->linkTo(['product', 'Add products Here!', 'class' => 'm-3 btn btn-primary']);
-    echo $this->tag->linkTo(['order', 'Place Order Here!', 'class' => 'm-3 btn btn-primary']);
-    echo $this->tag->linkTo(['setting', 'Apply Settings Here!', 'class' => 'm-3 btn btn-primary']);
-    echo  $this->tag->linkTo(['index', 'Homepage', 'class' => 'm-3 btn btn-primary']);
-    echo  $this->tag->linkTo(['order/show', 'View Orders', 'class' => 'btn btn-primary']);
+    echo $this->tag->linkTo(['signup', $this->locale->_('Signup Here!'), 'class' => 'm-3 btn btn-primary']);
+    echo $this->tag->linkTo(['product', $this->locale->_('Add products Here!'), 'class' => 'm-3 btn btn-primary']);
+    echo $this->tag->linkTo(['order', $this->locale->_('Place Order Here!'), 'class' => 'm-3 btn btn-primary']);
+    echo $this->tag->linkTo(['setting', $this->locale->_('Apply Settings Here!'), 'class' => 'm-3 btn btn-primary']);
+    echo $this->tag->linkTo(['role', $this->locale->_('Add role Here!'), 'class' => 'm-3 btn btn-primary']);
+    echo $this->tag->linkTo(['addaction', $this->locale->_('Add action Here!'), 'class' => 'm-3 btn btn-primary']);
+    echo  $this->tag->linkTo(['product/view', $this->locale->_('View Products'), 'class' => 'm-3 btn btn-primary']);
+    echo  $this->tag->linkTo(['index', $this->locale->_('Homepage'), 'class' => 'm-3 btn btn-primary']);
+    echo  $this->tag->linkTo(['order/show', $this->locale->_('View Orders'), 'class' => 'btn btn-primary']);
 
     ?>
     <h2>
-        Add Orders
-    </h2>
-    <h2>Place orders using this form</h2>
+    <?php echo $this->locale->_('Add Orders') ?>
+</h2>
     <?php echo $this->tag->form("order/add"); ?>
     <p>
         <label for="customer_name"><?php echo $this->locale->_('customer-name') ?></label>

@@ -40,7 +40,7 @@ class Listner extends Injectable
     {
         $bearer = $app->request->get("bearer");
         if (!empty($bearer)) {
-
+            
             $key = "123456789";
             $decoded = JWT::decode($bearer, new Key($key, 'HS256'));
             $decoded_array = (array) $decoded;
@@ -117,16 +117,14 @@ class Listner extends Injectable
                         if (true === $acl->isAllowed($value['role'], $value['controller'], $value['action'])) {
                             echo 'Access granted!';
                         } else {
-                            echo $this->locale->_('access-denied') ;
-                            // echo 'Access denied :(';
+                            echo $this->locale->_('access-denied');
                             $this->response->redirect('/index/');
                         }
                     }
                 }
             }
         } else {
-            echo $this->locale->_('Not recieved Token') ;
-            // echo "Not recieved Token";
+            echo $this->locale->_('Not recieved Token');
             die;
         }
     }
