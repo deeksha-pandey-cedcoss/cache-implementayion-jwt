@@ -28,10 +28,6 @@ class AddactionController extends Controller
 
         echo "<pre>";
         array_push($_SESSION['assign'], $data);
-        // print_r($_SESSION['assign']);die;
-
-        
         $this->response->redirect('/index/');
-        
     }
 }

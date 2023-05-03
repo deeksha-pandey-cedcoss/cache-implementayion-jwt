@@ -16,34 +16,35 @@
     echo  $this->tag->linkTo(['product/view', 'View Products', 'class' => 'm-3 btn btn-primary']);
     echo  $this->tag->linkTo(['index', 'Homepage', 'class' => 'm-3 btn btn-primary']);
     ?>
+   
 
     <h2>Add products using this form</h2>
     <?php echo $this->tag->form("product/add"); ?>
     <p>
-        <label for="name">Name</label>
+        <label for="name"><?php echo $this->locale->_('name') ?></label>
         <?php echo $this->tag->textfield(["pname", "class" => "form-control"]); ?>
     </p>
     <p>
-        <label for="description">Description</label>
+        <label for="description"><?php echo $this->locale->_('description') ?></label>
         <?php echo $this->tag->textfield(["pdescription", "class" => "form-control"]); ?>
     </p>
     <p>
-        <label for="tags">Tags</label>
+        <label for="tags"><?php echo $this->locale->_('tags') ?></label>
         <?php echo $this->tag->textfield(["ptags", "class" => "form-control"]); ?>
     </p>
     <p>
-        <label for="price">Price</label>
+        <label for="price"><?php echo $this->locale->_('price') ?></label>
         <?php echo $this->tag->textfield(["pprice", "class" => "form-control"]); ?>
     </p>
     <p>
-        <label for="stock">Stock</label>
+        <label for="stock"><?php echo $this->locale->_('stock') ?></label>
         <?php echo $this->tag->textfield(["pstock", "class" => "form-control"]); ?>
     </p>
     <p>
-        <?php echo $this->tag->submitButton(["ADD", 'class' => 'btn btn-primary']); ?>
+        <?php echo $this->tag->submitButton([$this->locale->_('add'), 'class' => 'btn btn-primary']); ?>
     </p>
     <p>
-
+    
         </form>
 </body>
 

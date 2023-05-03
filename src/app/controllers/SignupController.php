@@ -3,6 +3,7 @@
 use Phalcon\Mvc\Controller;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use MyApp\Locale;
 
 
 class SignupController extends Controller
@@ -11,6 +12,8 @@ class SignupController extends Controller
     public function IndexAction()
     {
         // defalut action
+        // eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjEzNTY5OTk1MjQsIm5iZiI6MTM1NzAwMDAwMCwicm9sZSI6ImFkbWluIn0.8MDNXPtnvoo_LFMiE05cdqX59ACR8HuvB7TMm9pRAKQ
+
     }
 
     public function registerAction()

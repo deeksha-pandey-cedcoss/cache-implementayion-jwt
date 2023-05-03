@@ -24,19 +24,19 @@
     <h2>Place orders using this form</h2>
     <?php echo $this->tag->form("order/add"); ?>
     <p>
-        <label for="customer_name">Customer-Name</label>
+        <label for="customer_name"><?php echo $this->locale->_('customer-name') ?></label>
         <?php echo $this->tag->textfield(["customer_name", "class" => "form-control"]); ?>
     </p>
     <p>
-        <label for="customer_address">Customer-Address </label>
+        <label for="customer_address"><?php echo $this->locale->_('customer-address') ?> </label>
         <?php echo $this->tag->textfield(["customer_address", "class" => "form-control"]); ?>
     </p>
     <p>
-        <label for="zipcode">Zipcode</label>
+        <label for="zipcode"><?php echo $this->locale->_('zipcode') ?></label>
         <?php echo $this->tag->textfield(["zipcode", "class" => "form-control"]); ?>
     </p>
     <p>
-        <label for="product_name">Product-name</label>
+        <label for="product_name"><?php echo $this->locale->_('product-name') ?></label>
         <?php
         $product = $this->db->fetchAll(
             "SELECT * FROM products",
@@ -50,7 +50,7 @@
         ?>
     </p>
     <p>
-        <label for="quantity">Quantity</label>
+        <label for="quantity"><?php echo $this->locale->_('quantity') ?></label>
         <?php echo $this->tag->textfield(["quantity", "class" => "form-control"]); ?>
     </p>
     <p>

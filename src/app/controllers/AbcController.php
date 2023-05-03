@@ -1,6 +1,7 @@
 <?php
 
 use Phalcon\Mvc\Controller;
+
 // defalut controller view
 class AbcController extends Controller
 {
@@ -16,17 +17,15 @@ class AbcController extends Controller
     }
     public function assets1Action()
     {
-       
-        $str ="";
+
+        $str = "";
         foreach ($this->session->get('action') as $key => $value) {
             if ($key == $_POST['data']) {
                 foreach ($value as $key1 => $value1) {
-                    $str.="<option value=" . $value1 . ">" . $value1 . "</option>";
+                    $str .= "<option value=" . $value1 . ">" . $value1 . "</option>";
                 }
             }
-           
         }
         return $str;
     }
-    
 }

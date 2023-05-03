@@ -117,14 +117,16 @@ class Listner extends Injectable
                         if (true === $acl->isAllowed($value['role'], $value['controller'], $value['action'])) {
                             echo 'Access granted!';
                         } else {
-                            echo 'Access denied :(';
+                            echo $this->locale->_('access-denied') ;
+                            // echo 'Access denied :(';
                             $this->response->redirect('/index/');
                         }
                     }
                 }
             }
         } else {
-            echo "Not recieved Token";
+            echo $this->locale->_('Not recieved Token') ;
+            // echo "Not recieved Token";
             die;
         }
     }

@@ -33,19 +33,18 @@
         echo "<select name='component' id='component'>";
         foreach ($this->session->get('list') as $key => $value) {
             echo "<option value=" . $value . "Controller >" . $value . "</option>";
-            
         }
         echo "</select>";
         ?>
     </p>
     <p>
-    <label for="action">Action</label>
-    <select name='action' id='actionn'>
+        <label for="action">Action</label>
+        <select name='action' id='actionn'>
     </p>
     <br>
     <br>
     <p>
-        
+
     </p>
     <p>
         <?php echo $this->tag->submitButton(["Assign Roles", 'class' => 'm-3 btn btn-primary submit']); ?>
