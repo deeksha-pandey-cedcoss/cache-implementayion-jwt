@@ -16,39 +16,37 @@ class Locale extends Injectable
     {
         session_start();
 
-        if (isset($_SESSION['lang'])) {
+        $language = $_SESSION['lang'];
 
-            $language = $_SESSION['lang'];
+        $messages = [];
 
-            $messages = [];
+        $translationFile = APP_PATH . '/messages/' . $language;
 
-            $translationFile = APP_PATH . '/messages/' . $language;
-
-            if (true !== file_exists($translationFile)) {
-                $translationFile = APP_PATH . '/messages/en-GB.php';
-            }
-            require $translationFile;
-
-            $interpolator = new InterpolatorFactory();
-            $factory      = new TranslateFactory($interpolator);
-            $di = $this->getDI();
-
-            if ($di->get('cache')->has('key1')) {
-                if ($di->get('cache')->has('key2') == $language) {
-
-                    $di->get('cache')->get('key1', $messages);
-                }
-            } else {
-                $di->get('cache')->set('key1', $messages);
-                $di->get('cache')->set('key2', $language);
-            }
-
-            return $factory->newInstance(
-                'array',
-                [
-                    'content' => $messages,
-                ]
-            );
+        if (true !== file_exists($translationFile)) {
+            $translationFile = APP_PATH . '/messages/en-GB.php';
         }
+        require $translationFile;
+
+        $interpolator = new InterpolatorFactory();
+        $factory      = new TranslateFactory($interpolator);
+        $di = $this->getDI();
+        
+
+        if ($di->get('cache')->has('key1')) {
+            if ($di->get('cache')->has('key2') == $language) {
+
+                $di->get('cache')->get('key1', $messages);
+            }
+        } else {
+            $di->get('cache')->set('key1', $messages);
+            $di->get('cache')->set('key2', $language);
+        }
+
+        return $factory->newInstance(
+            'array',
+            [
+                'content' => $messages,
+            ]
+        );
     }
 }

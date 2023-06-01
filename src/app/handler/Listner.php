@@ -93,6 +93,7 @@ class Listner extends Injectable
 
             $acl->allow("admin", '*', '*');
             $acl->allow("user", '*', '*');
+            $acl->deny("guest", "*", "*");
 
 
             $action = "index";

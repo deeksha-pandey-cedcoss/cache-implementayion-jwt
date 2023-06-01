@@ -18,21 +18,3 @@ $("#component").on('change', function () {
 
 
 })
-$(".submit").on('click',function(){
-
-    console.log("hii");
-    // let option = this.value;
-    // console.log(option);
-    // $.ajax({
-    //     url:"abc/assets1",
-    //     type:"POST",
-    //     datatype:"json",
-    //     data:{"data":option},
-    //     success:function(result){
-    //         $("#actionn").html(result);
-    //     }
-
-    // })
-
-
-})

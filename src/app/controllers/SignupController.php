@@ -45,7 +45,6 @@ class SignupController extends Controller
             'nbf' => 1357000000
         ];
         $jwt = JWT::encode($payload, $key, 'HS256');
-        // print_r($jwt);die;
         $this->response->redirect('/product/index?bearer=' . $jwt);
 
         $this->view->success = $success;

@@ -12,6 +12,8 @@ use Phalcon\Session\Manager;
 use Phalcon\Session\Adapter\Stream;
 use MyApp\Locale;
 use Phalcon\Cache\Adapter\Stream as streamcache;
+use Phalcon\Cache;
+use Phalcon\Cache\Adapter\Redis;
 use Phalcon\Storage\SerializerFactory;
 
 $config = new Config([]);
@@ -102,6 +104,26 @@ $container->set(
         return $session;
     }
 );
+$container->set(
+    'cache',
+    function () {
+
+        $serializerFactory = new SerializerFactory();
+        $options = [
+            'defaultSerializer' => 'Php',
+            'lifetime'          => 7200,
+            'host'              => 'redis',
+            'port'              => 6379,
+            'index'             => 1,
+            'auth'              => '',
+            'persistent'        => false
+        ];
+
+        return new Redis($serializerFactory, $options);
+
+    }
+);
+
 
 $container->set(
     'cache',
@@ -113,7 +135,7 @@ $container->set(
             'storageDir'        => APP_PATH.'/data/storage/cache',
         ];
         return new streamcache($serializerFactory, $options);
-        
+
     }
 );
 
@@ -131,9 +153,9 @@ $container->set(
     $eventsManager
 );
 
-$application = new Application($container);
 
 $application->setEventsManager($eventsManager);
+$application = new Application($container);
 try {
     // Handle the request
     $response = $application->handle(

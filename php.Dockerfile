@@ -5,8 +5,14 @@ ARG PHALCON_VERSION=4.0.2
 ARG PHALCON_EXT_PATH=php7/64bits
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
+
+RUN pecl install -o -f redis\
+&& rm -rf /temp/pear \
+&& docker-php-ext-enable redis
+
 RUN set -xe && \
     # Download PSR, see https://github.com/jbboehr/php-psr
+
     curl -LO https://github.com/jbboehr/php-psr/archive/v${PSR_VERSION}.tar.gz && \
     tar xzf ${PWD}/v${PSR_VERSION}.tar.gz && \
     # Download Phalcon
